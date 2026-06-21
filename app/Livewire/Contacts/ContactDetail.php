@@ -12,7 +12,7 @@ class ContactDetail extends Component
     public $contact, $contactId;
     public function mount($contactId)
     {
-        $this->contact = Contact::where('contactId', $contactId)->first();
+        $this->contact = Contact::where('contactId', $contactId)->firstOrFail();
     }
     public function downloadVCard($contactId)
     {
