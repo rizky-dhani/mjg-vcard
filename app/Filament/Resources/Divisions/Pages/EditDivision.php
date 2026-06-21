@@ -10,6 +10,16 @@ class EditDivision extends EditRecord
 {
     protected static string $resource = DivisionResource::class;
 
+    protected function getSavedNotificationTitle(): ?string
+    {
+        return 'Division updated successfully';
+    }
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
+
     protected function getHeaderActions(): array
     {
         return [

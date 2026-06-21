@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Division extends Model
 {
     protected $guarded = ['id'];
-    public function scopeSearch($query, $value){
+
+    public function scopeSearch($query, $value)
+    {
         $query->where('name', 'like', "%{$value}%");
     }
 }

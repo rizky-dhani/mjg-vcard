@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\Contacts\Schemas;
 
+use App\Models\Division;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
@@ -29,9 +31,9 @@ class ContactForm
                 TextInput::make('phone_number2')
                     ->tel()
                     ->maxLength(255),
-                \Filament\Forms\Components\Select::make('dept')
+                Select::make('dept')
                     ->label('Department / Division')
-                    ->options(\App\Models\Division::pluck('name', 'name'))
+                    ->options(Division::pluck('name', 'name'))
                     ->required(),
                 TextInput::make('title')
                     ->label('Job Title')

@@ -1,7 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Livewire\Contacts\ContactDetail;
-use App\Livewire\Public\BusinessCardDetail;
+use Illuminate\Support\Facades\Route;
 
 Route::get('contacts/detail/{contactId}', ContactDetail::class)->name('contacts.detail');

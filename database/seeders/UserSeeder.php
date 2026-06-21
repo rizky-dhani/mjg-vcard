@@ -3,10 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Support\Str;
 
 class UserSeeder extends Seeder
 {
@@ -19,7 +18,7 @@ class UserSeeder extends Seeder
             'userId' => Str::orderedUuid(),
             'name' => 'Superadmin',
             'email' => 'superadmin@medquest.co.id',
-            'password' => Hash::make('Superadmin2024!')
+            'password' => Hash::make('Superadmin2024!'),
         ]);
 
         $superadmin->assignRole('Super Admin');

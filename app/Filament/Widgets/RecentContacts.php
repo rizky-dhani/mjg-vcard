@@ -9,6 +9,10 @@ use Filament\Widgets\TableWidget;
 
 class RecentContacts extends TableWidget
 {
+    protected static ?int $sort = 2;
+    protected static ?string $heading = 'Recent Contacts';
+    protected int | string | array $columnSpan = 'full';
+
     public function table(Table $table): Table
     {
         return $table
@@ -20,8 +24,6 @@ class RecentContacts extends TableWidget
                 TextColumn::make('last_name'),
                 TextColumn::make('email'),
                 TextColumn::make('phone_number'),
-                TextColumn::make('created_at')
-                    ->dateTime(),
             ]);
     }
 }

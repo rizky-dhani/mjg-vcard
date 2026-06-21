@@ -4,14 +4,24 @@ namespace App\Filament\Resources\Contacts\Pages;
 
 use App\Filament\Resources\Contacts\ContactResource;
 use Filament\Resources\Pages\CreateRecord;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use JeroenDesloovere\VCard\VCard;
 use Milon\Barcode\DNS2D;
-use Illuminate\Support\Facades\Storage;
 
 class CreateContact extends CreateRecord
 {
     protected static string $resource = ContactResource::class;
+
+    protected function getCreatedNotificationTitle(): ?string
+    {
+        return 'Contact created successfully';
+    }
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {
@@ -25,18 +35,18 @@ class CreateContact extends CreateRecord
         $contact = $this->record;
 
         $vCardRaw = "BEGIN:VCARD\nVERSION:3.0\n"
-            . "N:{$contact->last_name};{$contact->first_name}\n"
-            . "FN:{$contact->first_name} {$contact->last_name}\n"
-            . "ADR;TYPE=WORK,PREF:;;{$contact->st_address};{$contact->city_address};{$contact->province_address};{$contact->postcode_address};{$contact->country_address}\n"
-            . "ORG:PT. Medquest Jaya Global\n"
-            . "ROLE:{$contact->dept}\n"
-            . "TITLE:{$contact->title}\n"
-            . "TEL;TYPE=MOBILE:{$contact->phone_number}\n"
-            . "TEL;TYPE=WORK:{$contact->phone_number2}\n"
-            . "EMAIL:{$contact->email}\n"
-            . "END:VCARD";
+            ."N:{$contact->last_name};{$contact->first_name}\n"
+            ."FN:{$contact->first_name} {$contact->last_name}\n"
+            ."ADR;TYPE=WORK,PREF:;;{$contact->st_address};{$contact->city_address};{$contact->province_address};{$contact->postcode_address};{$contact->country_address}\n"
+            ."ORG:PT. Medquest Jaya Global\n"
+            ."ROLE:{$contact->dept}\n"
+            ."TITLE:{$contact->title}\n"
+            ."TEL;TYPE=MOBILE:{$contact->phone_number}\n"
+            ."TEL;TYPE=WORK:{$contact->phone_number2}\n"
+            ."EMAIL:{$contact->email}\n"
+            .'END:VCARD';
 
-        $vcardObj = new VCard();
+        $vcardObj = new VCard;
         $vcardObj->addName($contact->last_name, $contact->first_name);
         $vcardObj->addEmail($contact->email);
         $vcardObj->addAddress(null, null, $contact->st_address, $contact->city_address, $contact->province_address, $contact->postcode_address, $contact->country_address, 'WORK');
@@ -47,12 +57,12 @@ class CreateContact extends CreateRecord
         $vcardObj->addJobtitle($contact->title);
         $vcfContent = $vcardObj->getOutput();
 
-        $qr = new DNS2D();
+        $qr = new DNS2D;
         $qr = base64_decode($qr->getBarcodePNG($vCardRaw, 'QRCODE'));
-        $barcodePath = 'img/vcard/' . $contact->contactId . '.png';
+        $barcodePath = 'img/vcard/'.$contact->contactId.'.png';
         Storage::disk('public')->put($barcodePath, $qr);
 
-        $vcfPath = 'file/vcard/' . $contact->first_name . '_' . $contact->last_name . '.vcf';
+        $vcfPath = 'file/vcard/'.$contact->first_name.'_'.$contact->last_name.'.vcf';
         Storage::disk('public')->put($vcfPath, $vcfContent);
 
         $contact->update([

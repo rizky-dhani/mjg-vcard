@@ -8,4 +8,14 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateDivision extends CreateRecord
 {
     protected static string $resource = DivisionResource::class;
+
+    protected function getCreatedNotificationTitle(): ?string
+    {
+        return 'Division created successfully';
+    }
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
 }
