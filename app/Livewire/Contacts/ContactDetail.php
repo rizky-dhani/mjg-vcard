@@ -4,7 +4,6 @@ namespace App\Livewire\Contacts;
 
 use App\Models\Contact;
 use Livewire\Attributes\Layout;
-use Livewire\Attributes\Title;
 use Livewire\Component;
 
 class ContactDetail extends Component
@@ -25,7 +24,11 @@ class ContactDetail extends Component
         return response()->download(public_path('storage/'.$contacts->file));
     }
 
-    #[Title('Contact Card Detail')]
+    public function getTitle(): string
+    {
+        return $this->contact->first_name.' '.$this->contact->last_name;
+    }
+
     #[Layout('components.layouts.public')]
     public function render()
     {
