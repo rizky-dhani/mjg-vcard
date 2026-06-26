@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Users\Pages;
 
 use App\Filament\Resources\Users\UserResource;
 use Filament\Resources\Pages\CreateRecord;
+use Illuminate\Support\Str;
 
 class CreateUser extends CreateRecord
 {
@@ -17,6 +18,13 @@ class CreateUser extends CreateRecord
     protected function getRedirectUrl(): string
     {
         return $this->getResource()::getUrl('index');
+    }
+
+    protected function mutateFormDataBeforeCreate(array $data): array
+    {
+        $data['userId'] = (string) Str::orderedUuid();
+
+        return $data;
     }
 
     protected function afterCreate(): void
