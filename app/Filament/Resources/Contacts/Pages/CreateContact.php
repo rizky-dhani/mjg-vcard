@@ -26,6 +26,8 @@ class CreateContact extends CreateRecord
     protected function mutateFormDataBeforeCreate(array $data): array
     {
         $data['contactId'] = (string) Str::orderedUuid();
+        $data['barcode'] = '';
+        $data['file'] = '';
 
         return $data;
     }
