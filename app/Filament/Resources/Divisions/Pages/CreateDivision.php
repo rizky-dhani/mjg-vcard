@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Divisions\Pages;
 
 use App\Filament\Resources\Divisions\DivisionResource;
 use Filament\Resources\Pages\CreateRecord;
+use Illuminate\Support\Str;
 
 class CreateDivision extends CreateRecord
 {
@@ -17,5 +18,12 @@ class CreateDivision extends CreateRecord
     protected function getRedirectUrl(): string
     {
         return $this->getResource()::getUrl('index');
+    }
+
+    protected function mutateFormDataBeforeCreate(array $data): array
+    {
+        $data['divisionId'] = (string) Str::orderedUuid();
+
+        return $data;
     }
 }
