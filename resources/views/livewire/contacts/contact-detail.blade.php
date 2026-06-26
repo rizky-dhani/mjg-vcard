@@ -1,8 +1,8 @@
 <div>
     <div class="container">
         <div class="row min-vh-100">
-            <div class="col-lg-2"></div>
-            <div class="col-lg-8 d-flex justify-content-center align-items-center">
+            <div class="col-lg-3"></div>
+            <div class="col-6 d-flex justify-content-center align-items-center">
                 <div class="py-5 card">
                     <div class="mb-4 text-center barcode-img">
                         <img src="{{ asset('images/logo/LOGO-MEDQUEST-HD-2020-11-27-14_56_44.png') }}" class="w-25 w-lg-25"
@@ -83,7 +83,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2"></div>
+            <div class="col-lg-3"></div>
         </div>
     </div>
 </div>
