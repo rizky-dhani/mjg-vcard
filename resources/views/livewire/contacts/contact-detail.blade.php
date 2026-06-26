@@ -10,7 +10,7 @@
                     </div>
                     <div class="text-center text-lg-start mb-lg-2 barcode-card">
                         <div class="mb-4">
-                            <img src="{{ asset('storage/'. $contact->barcode) }}" class="img-fluid" alt="" srcset="" style="width:8rem">
+                            <img src="{{ asset('storage/'. $contact->barcode) }}" class="img-fluid d-block mx-auto" alt="" srcset="" style="width:8rem">
                         </div>
                         <h4 class="mb-2 text-center fw-medium">{{ $contact->first_name.' '.$contact->last_name }}</h4>
                         <h6 class="mb-2 text-center fw-normal">{{ $contact->dept }}</h6>
