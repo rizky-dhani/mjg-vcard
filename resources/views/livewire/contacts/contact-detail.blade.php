@@ -22,7 +22,7 @@
                         <div class="row d-flex justify-content-center">
                             <div class="participant-table d-flex justify-content-center">
                                 <div class="row">
-                                    <div class="text-center text-lg-end col-lg-5">
+                                    <div class="text-center text-lg-start col-lg-5">
                                         <p class="pb-0 mb-0 fw-bolder h6">
                                             {{ __('Phone') }}
                                         </p>
@@ -33,7 +33,7 @@
                                         </a>
                                     </div>
                                     @if ($contact->phone_number2 != null)
-                                        <div class="text-center text-lg-end col-lg-5">
+                                        <div class="text-center text-lg-start col-lg-5">
                                             <p class="pb-0 mb-0 fw-bolder h6">
                                                 {{ __('Phone 2') }}
                                             </p>
@@ -44,7 +44,7 @@
                                         </a>
                                         </div>
                                     @endif
-                                    <div class="text-center text-lg-end col-lg-5">
+                                    <div class="text-center text-lg-start col-lg-5">
                                         <p class="pb-0 mb-0 fw-bolder h6">
                                             {{ __('Email') }}
                                         </p>
@@ -54,7 +54,7 @@
                                         <p class="h6 fw-normal">{{ $contact->email }}</p>
                                         </a>
                                     </div>
-                                    <div class="text-center text-lg-end col-lg-5">
+                                    <div class="text-center text-lg-start col-lg-5">
                                         <p class="pb-0 mb-0 fw-bolder h6">
                                             {{ __('Company') }}
                                         </p>
@@ -63,7 +63,7 @@
                                         <p class="h6 fw-normal">{{ __('PT. Medquest Jaya Global') }}</p>
                                         <p class="h6 fw-normal">{{ $contact->dept .' - '. $contact->title }}</p>
                                     </div>
-                                    <div class="text-center text-lg-end col-lg-5">
+                                    <div class="text-center text-lg-start col-lg-5">
                                         <p class="pb-0 mb-0 fw-bolder h6">
                                             {{ __('Address') }}
                                         </p>
