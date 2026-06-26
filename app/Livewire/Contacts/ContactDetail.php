@@ -32,8 +32,6 @@ class ContactDetail extends Component
     #[Layout('components.layouts.public')]
     public function render()
     {
-        return view('livewire.contacts.contact-detail', [
-            'title' => $this->getTitle(),
-        ]);
+        return view('livewire.contacts.contact-detail');
     }
 }
