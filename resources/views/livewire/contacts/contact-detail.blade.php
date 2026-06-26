@@ -8,7 +8,7 @@
                         <img src="{{ asset('images/logo/LOGO-MEDQUEST-HD-2020-11-27-14_56_44.png') }}" class="w-25 w-lg-25"
                             alt="">
                     </div>
-                    <div class="text-center mb-lg-2 barcode-card">
+                    <div class="text-center text-lg-start mb-lg-2 barcode-card">
                         <div class="mb-4">
                             <img src="{{ asset('storage/'. $contact->barcode) }}" class="img-fluid" alt="" srcset="" style="width:8rem">
                         </div>
